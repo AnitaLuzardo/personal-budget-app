@@ -4,11 +4,18 @@ const session = require('express-session');
 
 const app = express();
 
+app.use(express.static(__dirname + "/public"));
+app.use(express.static(publicPath));
+
 app.use(session({
     secret: 'Secret',
     resave: false,
     saveUninitialized: false,
-})); 
+}));
+
+app.get('/', (req, res) => {
+    res.send('Prueba')
+})
 
 app.set('view engine', 'ejs');
 
