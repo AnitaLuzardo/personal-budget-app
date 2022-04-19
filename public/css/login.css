@@ -1,0 +1,62 @@
+body {
+    background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+}
+
+.container-form {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formLogin {
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    border-radius: 10px;
+}
+
+.formLogin {
+    width: 80%;
+    text-align: center;
+}
+
+.register-link {
+    font-size: 10px;
+}
+
+.inf-input {
+    width: 80%;
+    margin-bottom: 20px;
+    height: 30px;
+    border-radius: 2px;
+    border: none;
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.btn-login {
+    background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    width: 90px;
+    height: 25px;
+}
+
+.register {
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+@media (min-width: 942px) {
+    .formLogin {
+        width: 35%;
+        text-align: center;
+    }
+}
+
+@media (min-width:600px) and (max-width: 941px) {
+    .formLogin {
+        width: 50%;
+    }
+}
