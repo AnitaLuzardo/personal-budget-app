@@ -6,3 +6,15 @@ body {
 html, body {
     height: 100%;
 }
+
+.inf-input {
+    font-family: 'Raleway', sans-serif;
+    text-indent: 5px;
+    width: 80%;
+    margin-bottom: 20px;
+    height: 30px;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    box-shadow: 0 8px 10px 0 rgb(0 0 0 / 20%), 0 6px 15px 0 rgb(0 0 0 / 15%);
+}

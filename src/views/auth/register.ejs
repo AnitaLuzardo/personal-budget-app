@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500;600&display=swap" rel="stylesheet">
+    <title>Register</title>
+</head>
+<body>
+    <section class="container-Register">
+        <form class="form-register" action="/register" method="POST"> 
+            <h1 class="register">Register</h1> <br>
+                <input class="inf-input" type="name" name="nombre" placeholder="Nombre"> <br>
+                <input class="inf-input" type="lastName" name="apellido" placeholder="Apellido"> <br>
+                <input class="inf-input" type="email" name="email" placeholder="Email"> <br>
+                <input class="inf-input" type="password" name="pwd" placeholder="Contraseña"> <br>
+                <input class="inf-input" type="password" name = "confirmPwd" placeholder="Confirmar contraseña"> <br>           
+                <div class="content-btn">
+                    <button class="btn-register" type="submit">Crea mi cuenta</button> <br>
+                    <p class="link">¿Ya tienes una Cuenta? <a href="/login"> Ingresá acá</a></p> 
+                </div>         
+        </form>
+    </section>
+</body>
+</html>
