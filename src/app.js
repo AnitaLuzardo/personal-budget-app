@@ -3,6 +3,7 @@ const path = require('path');
 const session = require('express-session');
 const bodyParser = require ('body-parser');
 const authRoutes = require('./routes/authRoutes');
+const mainRoute = require('./routes/mainRoutes') 
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(session({
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
 
+app.use('/', mainRoute);
 app.use('/', authRoutes);
 
-app.listen(3001, () => console.log('Servidor corriendo, http://localhost:3000'));
+app.listen(3001, () => console.log('Servidor corriendo, http://localhost:3001'));
