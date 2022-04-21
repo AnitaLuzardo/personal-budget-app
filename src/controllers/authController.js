@@ -1,10 +1,22 @@
+const req = require("express/lib/request");
+
 const authController = {
-    login: (req, res) => {
+    viewsLogin: (req, res) => {
         res.render('auth/login');
     },
 
-    register: (req, res) => {
+    viewsRegister: (req, res) => {
         res.render('auth/register')
+    },
+
+    login: async(req, res) => {
+
+    },
+    
+    register: (req, res) => {
+        console.log('entrando en el post register');
+        // res.send({ message: 'probando'});
+        res.sendStatus(500).send({ error: 'probando error'});
     }
 };
 

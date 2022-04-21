@@ -1,6 +1,10 @@
 const mainController = {
-    home: (req, res) => {
+    viewHome: (req, res) => {
         res.render('home');
+    },
+
+    home: (req, res) => {
+        
     }
 }
 
