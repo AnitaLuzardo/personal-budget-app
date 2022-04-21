@@ -4,9 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500;600&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <title>Personal Budget</title>
 </head>
 <body>
-    <h1>Prueba</h1>
+    <section class="content">
+        <p>Personal Budget</p>
+    </section>
+    <section class="form-content">
+        <form class="form-op" action="/" method="POST">
+            <section class= "container-input">
+                <input class="operation" type="name" name="concepto" placeholder="Concepto">
+                <input class="operation" type="number" name="monto" placeholder="Monto">
+                <section class="container-date">
+                    <input class="date" type="date" name="fecha" placeholder="Fecha">
+                </section>
+                <div class="container-type">
+                    <label class="type-op" for="" > Tipo de Operación </label>
+                    <select  class="select-op" id="" name="">
+                        <option value="1">Ingreso</option>
+                        <option value="2">Egreso</option>       
+                    </select>
+                </div>
+            </section>
+            <div class= "container-add">
+                <input type="submit" value="Agregar" class="add-operation">
+            </div>        
+         </form>
+    </section>
+   <section>
+        <table>
+            <tr>
+                <th>Concepto</th>
+                <th>Monto</th>
+                <th>Fecha</th>
+                <th>Operación</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr>
+                <td>Servicios</td>
+                <td>1.500</td>
+                <td>15/04/2022</td>
+                <td>Egreso</td>
+                <td> 
+                    <i class='bx bx-edit-alt'></i> 
+                </td>
+                <td>
+                    <i class='bx bxs-trash-alt'></i>
+                </td>
+            </tr>
+    </table>
+   </section>
+   
 </body>
 </html>
