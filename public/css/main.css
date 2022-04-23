@@ -17,3 +17,8 @@ html, body {
     border: 1px solid rgb(162, 160, 160);
     outline: none;
 }
+
+.errors {
+    font-size: 11px;
+    color: red;
+}

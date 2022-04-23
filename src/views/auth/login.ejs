@@ -12,10 +12,11 @@
 </head>
 <body>
    <section class="container-form">
-       <form class="form-login" action="/login" method="POST"> 
-            <h1 class="login">Login</h1><br>   
+       <form class="form-login" id="formLogin"  onsubmit="onLoginSubmit(event)"> 
+            <h1 class="login">Login</h1><br>  
+            <div id="errors-form"></div> 
                 <i class='bx bxs-user'></i>
-                 <input class="inf-input" type="email" name="email" placeholder="Email"> <br>         
+                <input class="inf-input" type="email" name="email" placeholder="Email"> <br>         
                 <i class='bx bxs-lock-alt'></i>
                 <input class="inf-input" type="password" name="pwd" placeholder="Contraseña">
                 <button class="btn-login" type="submit">Iniciar Sesión</button>             
@@ -24,5 +25,6 @@
             </div>         
         </form>
    </section>  
+   <script src="js/login.js"></script>
 </body>
 </html>

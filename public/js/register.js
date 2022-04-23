@@ -83,10 +83,37 @@ function validateForm() {
     return formValid;
 }
 
-function onRegisterSubmit(event) {
+async function onRegisterSubmit(event) {
   event.preventDefault();
-  validateForm();
+
   if (validateForm()) {
-    console.log('haciendo la pegada');
+    const form = document.forms["registerForm"];
+    const body = {
+      name: form['name'].value,
+      last_name: form['lastName'].value,
+      email: form['email'].value,
+      pwd: form['pwd'].value,
+    };
+
+    try {
+        const response = await fetch('/api/register', { 
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        });
+
+        if (response.status === 200 && response.ok) {
+          window.location.href = '/login';
+        } else {
+          const data = await response.json();
+          console.log('register data', data);
+          const divErrors = document.getElementById('errors-form');
+          divErrors.innerHTML = `<p class="errors">${data.error}</p>`;
+        }
+    } catch (error) {
+      console.log('register error', error);
+    }
   }
 }
