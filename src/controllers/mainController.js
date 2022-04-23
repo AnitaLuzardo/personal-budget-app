@@ -1,6 +1,7 @@
 const mainController = {
     viewHome: (req, res) => {
-        res.render('home');
+        console.log(req.session);
+        res.render('home', { user: req.session.userToLogin });
     },
 
     home: (req, res) => {

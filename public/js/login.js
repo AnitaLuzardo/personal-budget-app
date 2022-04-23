@@ -11,19 +11,19 @@ function validateForm() {
         default: 'rgb(162, 160, 160)'
     };
 
-    const errorMessage = "Debe llenar los campos en rojo"
+    let errorMessage = undefined;
 
     if(fields.email.value == "") {
         fields.email.style.borderColor = colors.alert;
         formValid = false;
-        errorMessage;
+        errorMessage = "Debe llenar los campos en rojo";
     } else {
         fields.email.style.borderColor = colors.default;
     }
     if(fields.password.value == "") {
         fields.password.style.borderColor = colors.alert;
         formValid = false;
-        errorMessage;
+        errorMessage = "Debe llenar los campos en rojo";
     } else {
         fields.password.style.borderColor = colors.default;
     }
@@ -41,16 +41,31 @@ async function onLoginSubmit(event) {
     event.preventDefault();
 
     if (validateForm()) {
-      console.log('haciendo la pegada');
-    //   const form = document.forms["formLogin"];
-    //   const body = {
-    //       email: form ['email'].value,
-    //       password: form ['pwd'].value
-    //   };  
-      try {
-          const response = await fetch('/api/login', { method: 'POST' });
-      } catch (error) {
-          
-      }
+        const form = document.forms["formLogin"];
+        const body = {
+            email: form ['email'].value,
+            pwd: form ['pwd'].value
+        };  
+
+        try {
+            const response = await fetch('/api/login', {
+                method: 'POST', 
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+
+            if (response.status === 200 && response.ok) {
+                window.location.href = '/';
+                } else {
+                const data = await response.json();
+                console.log('Login data', data);
+                const divErrors = document.getElementById('errors-form');
+                divErrors.innerHTML = `<p class="errors">${data.error}</p>`;
+            }
+        } catch (error) {
+            console.log('login error', error);
+        }
     }
 }

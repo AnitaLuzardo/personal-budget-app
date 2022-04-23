@@ -12,6 +12,13 @@
 <body>
     <section class="content">
         <p>Personal Budget</p>
+        <% if (typeof user == "object") { %>
+            <div class="user-loged">
+                <p class="user-logged"><i class='bx bx-user-circle'></i></i> <%= user.name %> </p> 
+                <a href="/logout"><i class='bx bx-log-out-circle'></i></a>
+            </div>
+            
+        <% } %>
     </section>
     <section class="form-content">
         <form class="form-op" action="/" method="POST">
@@ -58,6 +65,5 @@
             </tr>
     </table>
    </section>
-   
 </body>
 </html>

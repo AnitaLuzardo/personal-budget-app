@@ -6,9 +6,34 @@ body {
 .content {
     background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
     display: flex;
-    justify-content: center; 
+    justify-content: space-around;
+    align-items: center;
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
+}
+
+.user-logged {
+    position: relative;
+}
+
+.bx-log-out-circle {
+    color: crimson;
+    margin-left: 5px;
+}
+
+.bx-user-circle {
+    font-size: 24px;
+    position: absolute;
+    transform: translateX(10px);
+    top: -20%;
+    left: -40px;
+    color: green;
+}
+
+.user-loged {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .content > p {

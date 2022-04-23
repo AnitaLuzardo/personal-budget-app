@@ -1,6 +1,8 @@
 const req = require("express/lib/request");
 const db = require('../../database/models');
 const bcrypt = require('bcryptjs');
+const session = require('express-session');
+const { name } = require("ejs");
 
 const authController = {
     viewsLogin: (req, res) => {
@@ -18,22 +20,28 @@ const authController = {
         const userToLogin = await db.users.findOne({ where: { email: email } });
 
         try {
-            if(userToLogin === undefined) {
+            if (userToLogin === null) {
                 res.status(401).json({error: 'Los datos no coinciden'});
                 return false;
             }
 
-            const bool = bcrypt.compareSync(password, userToLogin.pwd);
+            const bool =  bcrypt.compareSync(password, userToLogin.pwd);
 
-            if(!bool) {
+            if (!bool) {
                 res.status(401).json({error: 'Los datos no coinciden'});
                 return false;
+            } else {
+                req.session.userToLogin = {
+                    name: userToLogin.name,
+                    email: userToLogin.email
+                }
+
+                res.send();
             }
         } catch (error) {
-            console.log('ERROR:', e)
+            console.log('ERROR:', error)
             res.sendStatus(500);
         }
-
     },
     
     register: async (req, res) => {        
@@ -56,7 +64,14 @@ const authController = {
             console.log('ERROR:', e)
             res.sendStatus(500);
         }
+    },
+
+    logout: async (req, res) => {
+        console.log('adios');
+        req.session.destroy();
+        res.redirect('/login');
     }
+
 };
 
 module.exports = authController;
