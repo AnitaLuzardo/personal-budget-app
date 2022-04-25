@@ -23,7 +23,7 @@ function validateForm() {
     if(fields.password.value == "") {
         fields.password.style.borderColor = colors.alert;
         formValid = false;
-        errorMessage = "Debe llenar los campos en rojo";
+        errorMessage =  "Debe llenar los campos en rojo";
     } else {
         fields.password.style.borderColor = colors.default;
     }
@@ -58,7 +58,7 @@ async function onLoginSubmit(event) {
 
             if (response.status === 200 && response.ok) {
                 window.location.href = '/';
-                } else {
+            } else {
                 const data = await response.json();
                 console.log('Login data', data);
                 const divErrors = document.getElementById('errors-form');

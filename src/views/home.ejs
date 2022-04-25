@@ -21,18 +21,19 @@
         <% } %>
     </section>
     <section class="form-content">
-        <form class="form-op" action="/" method="POST">
+        <form class="form-op" id="formOperation"  onsubmit="onOperationSubmit(event)">
+            <div id="errors-form"></div>
             <section class= "container-input">
-                <input class="operation" type="name" name="concepto" placeholder="Concepto">
-                <input class="operation" type="number" name="monto" placeholder="Monto">
+                <input class="operation" type="name" name="concept" placeholder="Concepto">
+                <input class="operation" type="number" name="amount" placeholder="Monto">
                 <section class="container-date">
-                    <input class="date" type="date" name="fecha" placeholder="Fecha">
+                    <input class="date" type="date" name="register_date" placeholder="Fecha">
                 </section>
                 <div class="container-type">
                     <label class="type-op" for="" > Tipo de Operación </label>
-                    <select  class="select-op" id="" name="">
-                        <option value="1">Ingreso</option>
-                        <option value="2">Egreso</option>       
+                    <select  class="select-op" id="" name="type_operation">
+                        <option value="I">Ingreso</option>
+                        <option value="E">Egreso</option>       
                     </select>
                 </div>
             </section>
@@ -42,28 +43,28 @@
          </form>
     </section>
    <section>
-        <table>
+        <table id="table-movements">
             <tr>
                 <th>Concepto</th>
                 <th>Monto</th>
                 <th>Fecha</th>
                 <th>Operación</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Acciones</th>
             </tr>
-            <tr>
-                <td>Servicios</td>
-                <td>1.500</td>
-                <td>15/04/2022</td>
-                <td>Egreso</td>
-                <td> 
-                    <i class='bx bx-edit-alt'></i> 
-                </td>
-                <td>
-                    <i class='bx bxs-trash-alt'></i>
-                </td>
-            </tr>
-    </table>
+            <% movements.forEach(movement => { %>
+                <tr>
+                    <td><%= movement.concept %> </td>
+                    <td><%= movement.amount %> </td>
+                    <td><%= movement.register_date %> </td>
+                    <td><%= movement.type_operation == "I" ? "Ingreso" : "Egreso" %> </td>
+                    <td> 
+                        <i class='bx bx-edit-alt'></i> 
+                        <i class='bx bxs-trash-alt'></i>
+                    </td>
+                </tr>
+           <% }); %> 
+        </table>
    </section>
+   <script src="js/main.js"></script>
 </body>
 </html>

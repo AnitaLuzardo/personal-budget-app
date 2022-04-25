@@ -18,7 +18,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
             type: dataTypes.STRING
         },
-        tamount: {
+        amount: {
             allowNull: false,
             type: dataTypes.DECIMAL
         },

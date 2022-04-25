@@ -1,8 +1,5 @@
-const req = require("express/lib/request");
 const db = require('../../database/models');
 const bcrypt = require('bcryptjs');
-const session = require('express-session');
-const { name } = require("ejs");
 
 const authController = {
     viewsLogin: (req, res) => {
@@ -33,7 +30,8 @@ const authController = {
             } else {
                 req.session.userToLogin = {
                     name: userToLogin.name,
-                    email: userToLogin.email
+                    email: userToLogin.email,
+                    id: userToLogin.id
                 }
 
                 res.send();
