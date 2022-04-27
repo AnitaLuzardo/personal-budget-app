@@ -52,7 +52,7 @@ const mainController = {
             }
 
             const movement = await db.movements.update(movementUpdate, { where: { id: formMovement.id }});
-            // movement.save();
+            // movement.save();git
             // const movements = await db.movements.findAll({ where: { id_user: req.session.userToLogin.id }});
             const movements = await db.movements.findAll({ where: { id_user: 2 }}); // esto es pruebaaaaa
 
