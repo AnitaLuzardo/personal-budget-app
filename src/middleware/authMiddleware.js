@@ -15,6 +15,5 @@ function authMiddleware(req, res, next) {
         next();
     }
 }
-console.log(authMiddleware);
 
 module.exports = authMiddleware;

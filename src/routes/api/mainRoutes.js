@@ -2,8 +2,12 @@ const express = require('express');
 const router = express.Router();
 const controllers = require ('../../controllers/mainController');
 
-router.get('/list', controllers.home )
+router.get('/list', controllers.home);
 
-router.put('/movements/save', controllers.saveMovements)
+router.post('/movements/save', controllers.saveMovements);
+
+router.delete('/movements/delete', controllers.deleteMovement);
+
+router.put('/movements/update', controllers.updateMovements);
 
 module.exports = router;

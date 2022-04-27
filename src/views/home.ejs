@@ -58,8 +58,8 @@
                     <td><%= movement.register_date %> </td>
                     <td><%= movement.type_operation == "I" ? "Ingreso" : "Egreso" %> </td>
                     <td> 
-                        <i class='bx bx-edit-alt'></i> 
-                        <i class='bx bxs-trash-alt'></i>
+                        <button><i class='bx bx-edit-alt'></i></button>
+                        <button onclick="deleteMovement('<%= movement.id %>')"><i class='bx bxs-trash-alt'></i></button>
                     </td>
                 </tr>
            <% }); %> 

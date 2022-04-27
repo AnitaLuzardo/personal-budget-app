@@ -48,12 +48,13 @@ async function onOperationSubmit(event) {
     if (formValid) {
         try {
             const response = await fetch('/api/movements/save', {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(fields)
             });
+
             const movements = await response.json();
             const table = document.getElementById('table-movements');
             let tableHtml = `<tr>
@@ -63,7 +64,7 @@ async function onOperationSubmit(event) {
                                 <th>Operación</th>
                                 <th>Acciones</th>
                             </tr>`;
-            // console.log('home data', data);
+            
             movements.forEach(m => {
                 tableHtml += `<tr>
                                 <td>${m.concept}</td>
@@ -71,14 +72,53 @@ async function onOperationSubmit(event) {
                                 <td>${m.register_date}</td>
                                 <td>${m.type_operation == "I" ? "Ingreso" : "Egreso" }</td>
                                 <td> 
-                                    <i class='bx bx-edit-alt'></i> 
-                                    <i class='bx bxs-trash-alt'></i>
+                                    <button><i class='bx bx-edit-alt'></i></button>
+                                    <button onclick="deleteMovement('${m.id}')"><i class='bx bxs-trash-alt'></i></button>
                                 </td>
                             </tr>`;
             });
-            table.innerHTML = tableHtml;
-        } catch (error) {
 
+            table.innerHTML = tableHtml;
+
+        } catch (error) {
+            console.log('Error!!', error)
         }
     } 
+}
+
+async function deleteMovement(id) {
+    try {
+        const response = await fetch ('/api/movements/delete', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id })
+        }) 
+        const movementsList = await response.json();
+        const table = document.getElementById('table-movements');
+        let tableHtml = `<tr>
+                                <th>Concepto</th>
+                                <th>Monto</th>
+                                <th>Fecha</th>
+                                <th>Operación</th>
+                                <th>Acciones</th>
+                            </tr>`;
+        movementsList.forEach(m => {
+            tableHtml += `<tr>
+                            <td>${m.concept}</td>
+                            <td>${m.amount}</td>
+                            <td>${m.register_date}</td>
+                            <td>${m.type_operation == "I" ? "Ingreso" : "Egreso" }</td>
+                            <td> 
+                                <button><i class='bx bx-edit-alt'></i></button>
+                                <button onclick="deleteMovement('${m.id}')"><i class='bx bxs-trash-alt'></i></button>
+                            </td>
+                        </tr>`;
+        });
+        table.innerHTML = tableHtml;
+
+    } catch (error) {
+        console.log('Error', error);
+    }
 }
