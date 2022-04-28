@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/home.css">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500;600&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <title>Personal Budget</title>
-</head>
+<%- include('./partials/head'); %>
 <body>
     <section class="content">
         <p>Personal Budget</p>
@@ -17,7 +7,6 @@
                 <p class="user-logged"><i class='bx bx-user-circle'></i></i> <%= user.name %> </p> 
                 <a href="/logout"><i class='bx bx-log-out-circle'></i></a>
             </div>
-            
         <% } %>
     </section>
     <section class="form-content">
@@ -43,27 +32,29 @@
          </form>
     </section>
    <section>
-        <table id="table-movements">
-            <tr>
-                <th>Concepto</th>
-                <th>Monto</th>
-                <th>Fecha</th>
-                <th>Operación</th>
-                <th>Acciones</th>
-            </tr>
-            <% movements.forEach(movement => { %>
-                <tr>
-                    <td><%= movement.concept %> </td>
-                    <td><%= movement.amount %> </td>
-                    <td><%= movement.register_date %> </td>
-                    <td><%= movement.type_operation == "I" ? "Ingreso" : "Egreso" %> </td>
-                    <td> 
-                        <button><i class='bx bx-edit-alt'></i></button>
-                        <button onclick="deleteMovement('<%= movement.id %>')"><i class='bx bxs-trash-alt'></i></button>
-                    </td>
+       <div class="container-table">
+            <table id="table-movements">
+                <tr class="tittle-movements">
+                    <th>Concepto</th>
+                    <th>Monto</th>
+                    <th>Fecha</th>
+                    <th>Operación</th>
+                    <th>Acciones</th>
                 </tr>
-           <% }); %> 
-        </table>
+                <% movements.forEach(movement => { %>
+                    <tr class="inf">
+                        <td id="<%= movement.id%>-1"><%= movement.concept %> </td>
+                        <td><%= movement.amount %> </td>
+                        <td><%= movement.register_date %> </td>
+                        <td><%= movement.type_operation == "I" ? "Ingreso" : "Egreso" %> </td>
+                        <td> 
+                            <!-- <button class= "btn-edit-delet blue" onclick="editMovement('<%= movement.id %>')"><i class='bx bx-edit-alt'></i></button> -->
+                            <button  class="btn-edit-delet red" onclick="deleteMovement('<%= movement.id %>')"><i class='bx bxs-trash-alt'></i></button>
+                        </td>
+                    </tr>
+            <% }); %> 
+            </table>
+        </div>
    </section>
    <script src="js/main.js"></script>
 </body>

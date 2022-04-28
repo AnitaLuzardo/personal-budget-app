@@ -57,7 +57,7 @@ async function onOperationSubmit(event) {
 
             const movements = await response.json();
             const table = document.getElementById('table-movements');
-            let tableHtml = `<tr>
+            let tableHtml = `<tr class="tittle-movements">
                                 <th>Concepto</th>
                                 <th>Monto</th>
                                 <th>Fecha</th>
@@ -66,14 +66,13 @@ async function onOperationSubmit(event) {
                             </tr>`;
             
             movements.forEach(m => {
-                tableHtml += `<tr>
+                tableHtml += `<tr class="inf">
                                 <td>${m.concept}</td>
                                 <td>${m.amount}</td>
                                 <td>${m.register_date}</td>
                                 <td>${m.type_operation == "I" ? "Ingreso" : "Egreso" }</td>
                                 <td> 
-                                    <button><i class='bx bx-edit-alt'></i></button>
-                                    <button onclick="deleteMovement('${m.id}')"><i class='bx bxs-trash-alt'></i></button>
+                                    <button class="btn-edit-delet red" onclick="deleteMovement('${m.id}')"><i class='bx bxs-trash-alt'></i></button>
                                 </td>
                             </tr>`;
             });
@@ -97,7 +96,7 @@ async function deleteMovement(id) {
         }) 
         const movementsList = await response.json();
         const table = document.getElementById('table-movements');
-        let tableHtml = `<tr>
+        let tableHtml = `<tr class="tittle-movements">
                                 <th>Concepto</th>
                                 <th>Monto</th>
                                 <th>Fecha</th>
@@ -105,14 +104,13 @@ async function deleteMovement(id) {
                                 <th>Acciones</th>
                             </tr>`;
         movementsList.forEach(m => {
-            tableHtml += `<tr>
+            tableHtml += `<tr class="inf">
                             <td>${m.concept}</td>
                             <td>${m.amount}</td>
                             <td>${m.register_date}</td>
                             <td>${m.type_operation == "I" ? "Ingreso" : "Egreso" }</td>
                             <td> 
-                                <button><i class='bx bx-edit-alt'></i></button>
-                                <button onclick="deleteMovement('${m.id}')"><i class='bx bxs-trash-alt'></i></button>
+                                <button class="btn-edit-delet red" onclick="deleteMovement('${m.id}')"><i class='bx bxs-trash-alt'></i></button>
                             </td>
                         </tr>`;
         });
@@ -120,5 +118,21 @@ async function deleteMovement(id) {
 
     } catch (error) {
         console.log('Error', error);
+    }
+}
+
+async function editMovement (id) {
+    try {
+        const response = await fetch ('/api/movements/update', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id })
+        })
+        const movement = await response.json();
+
+    } catch (error) {
+        console.log('Error!', error)
     }
 }
